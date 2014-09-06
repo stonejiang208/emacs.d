@@ -5,9 +5,6 @@
   (require-package 'coffee-mode))
 (require-package 'js-comint)
 
-(after-load 'js2-mode
-  (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command))
-
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
   "Javascript mode to use for .js files."
@@ -27,20 +24,27 @@
 
 ;; js2-mode
 (after-load 'js2-mode
-  (add-hook 'js2-mode-hook '(lambda () (setq mode-name "JS2"))))
+  ;; Disable js2 mode's syntax error highlighting by default...
+  (setq-default js2-mode-show-parse-errors nil
+                js2-mode-show-strict-warnings nil)
+  ;; ... but enable it if flycheck can't handle javascript
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (unless (flycheck-get-checker-for-buffer)
+                (set (make-local-variable 'js2-mode-show-parse-errors) t)
+                (set (make-local-variable 'js2-mode-show-strict-warnings) t))))
 
-(setq js2-use-font-lock-faces t
-      js2-mode-must-byte-compile nil
-      js2-basic-offset preferred-javascript-indent-level
-      js2-indent-on-enter-key t
-      js2-auto-indent-p t
-      js2-bounce-indent-p nil)
+  (add-hook 'js2-mode-hook '(lambda () (setq mode-name "JS2")))
 
-(after-load 'js2-mode
-  (js2-imenu-extras-setup))
+  (setq-default
+   js2-basic-offset preferred-javascript-indent-level
+   js2-bounce-indent-p nil)
+
+  (after-load 'js2-mode
+    (js2-imenu-extras-setup)))
 
 ;; js-mode
-(setq js-indent-level preferred-javascript-indent-level)
+(setq-default js-indent-level preferred-javascript-indent-level)
 
 
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
