@@ -69,23 +69,25 @@
 ;;----------------------------------------------------------------------------
 ;; org捕获
 ;;----------------------------------------------------------------------------
-(setq org-default-notes-file (concat org-directory "~/org/notes.org"))
-(define-key global-map "\C-cc" 'org-capture)
+(setq org-directory "~/org")
+(setq org-default-notes-file (concat org-directory "/capture.org"))
+(define-key global-map "\C-ci" 'org-capture)
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
-         "* TODO %?\n %i\n %a")
+      '(("t" "Todo" entry (file+headline "~/org/inbox.org" "Tasks")
+         "* TODO %?\n %i\n %t")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n %i\n %a")))
 
 ;;----------------------------------------------------------------------------
 ;; tab to space
 ;;----------------------------------------------------------------------------
-(setq  indent-tabs-mode nil)
-(set-default 'tab-width 4)
-(setq tab-width 4)
-(loop for x downfrom 40 to 1 do
-      (setq tab-stop-list (cons (* x (default-value tab-width)) tab-stop-list)))
+;;(setq  indent-tabs-mode nil)
+;;(set-default 'tab-width 4)
+;;(setq tab-width 4)
+;;(loop for x downfrom 40 to 1 do
+;;      (setq tab-stop-list (cons (* x (default-value tab-width)) tab-stop-list)))
+
 
 
 ;;----------------------------------------------------------------------------
@@ -109,10 +111,17 @@
       'mew-send-hook))
 
 ;;----------------------------------------------------------------------------
-;; nc.el Norton Commander / sunrise Commander
+;; emms
 ;;----------------------------------------------------------------------------
-;;(autoload 'nc "nc" "Emulate MS-DOG file shell" t)
-(require 'sunrise-commander)
+;;(add-to-list 'load-path "~/elisp/emms/")
+;;(require 'emms-setup)
+;;(emms-standard)
+;;(emms-default-players)
+
+;;----------------------------------------------------------------------------
+;; 高亮当前行
+;;----------------------------------------------------------------------------
+(global-hl-line-mode 1)
 
 
 ;;----------------------------------------------------------------------------
