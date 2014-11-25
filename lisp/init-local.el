@@ -69,6 +69,8 @@
 ;;----------------------------------------------------------------------------
 ;; org mode
 ;;----------------------------------------------------------------------------
+(setq org-startup-indented t)
+
 (setq org-directory "~/org")
 (setq org-mobile-inbox-for-pull "~/org/flagged.org")
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
