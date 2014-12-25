@@ -61,5 +61,8 @@
 
 (setq dabbrev-friend-buffer-function 'sanityinc/dabbrev-friend-buffer)
 
+;; 默认开启ac 使用pos-tip
+(ac-config-default)
+(require 'pos-tip)
 
 (provide 'init-auto-complete)

@@ -27,8 +27,8 @@
 ;;----------------------------------------------------------------------------
 ;; 支持中文斜体的显示
 ;;----------------------------------------------------------------------------
-(set-frame-font "Source Code Pro-12")
-(set-fontset-font "fontset-default" (quote gb18030) (quote ("STHeiti" . "unicode-bmp")))
+;;(set-frame-font "Source Code Pro-12")
+;;(set-fontset-font "fontset-default" (quote gb18030) (quote ("STHeiti" . "unicode-bmp")))
 ;;(set-language-environment 'Chinese-GB)
 
 ;;(set-keyboard-coding-system 'euc-cn)
@@ -39,6 +39,10 @@
 ;;(prefer-coding-system 'euc-cn)
 ;;(setq default-process-coding-system 'euc-cn)
 ;;(setq-default pathname-coding-system 'euc-cn)
+
+(set-default-font "Monaco 10")
+(set-fontset-font "fontset-default" 'unicode"STHeiti 12")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; unicad.el 让 Emacs 自动识别文件编码
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -225,10 +229,42 @@ opinion. "
 ;;----------------------------------------------------------------------------
 ;; emms
 ;;----------------------------------------------------------------------------
-;;(add-to-list 'load-path "~/elisp/emms/")
-;;(require 'emms-setup)
-;;(emms-standard)
-;;(emms-default-players)
+(add-to-list 'load-path "~/elisp/emms/")
+(require 'emms-setup)
+(emms-standard)
+(emms-default-players)
+;;评分
+(require 'emms-score)
+(emms-score 1)
+;; autodetect musci files id3 tags encodeing
+(require 'emms-i18n)
+;; auto-save and import last playlist
+(require 'emms-history)
+
+;; global key-map
+;; all global keys prefix is C-c e
+;; compatible with emms-playlist mode keybindings
+;; you can view emms-playlist-mode.el to get details about
+;; emms-playlist mode keys map
+(global-set-key (kbd "C-c e s") 'emms-stop)
+(global-set-key (kbd "C-c e P") 'emms-pause)
+(global-set-key (kbd "C-c e n") 'emms-next)
+(global-set-key (kbd "C-c e p") 'emms-previous)
+(global-set-key (kbd "C-c e f") 'emms-show)
+(global-set-key (kbd "C-c e >") 'emms-seek-forward)
+(global-set-key (kbd "C-c e <") 'emms-seek-backward)
+;; these keys maps were derivations of above keybindings
+(global-set-key (kbd "C-c e S") 'emms-start)
+(global-set-key (kbd "C-c e g") 'emms-playlist-mode-go)
+(global-set-key (kbd "C-c e t") 'emms-play-directory-tree)
+(global-set-key (kbd "C-c e h") 'emms-shuffle)
+(global-set-key (kbd "C-c e e") 'emms-play-file)
+(global-set-key (kbd "C-c e l") 'emms-play-playlist)
+(global-set-key (kbd "C-c e r") 'emms-toggle-repeat-track)
+(global-set-key (kbd "C-c e R") 'emms-toggle-repeat-playlist)
+(global-set-key (kbd "C-c e u") 'emms-score-up-playing)
+(global-set-key (kbd "C-c e d") 'emms-score-down-playing)
+(global-set-key (kbd "C-c e o") 'emms-score-show-playing)
 
 ;;----------------------------------------------------------------------------
 ;; 高亮当前行
@@ -290,6 +326,34 @@ opinion. "
 (setq mark-holidays-in-calendar t)
 (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
 (setq calendar-holidays cal-china-x-important-holidays)
+
+;;----------------------------------------------------------------------------
+;; CEDET
+;;----------------------------------------------------------------------------
+(require 'semantic)
+;; Enable EDE (Project Management) features
+(global-ede-mode 1)                      ; Enable the Project management system
+
+;;----------------------------------------------------------------------------
+;; 自动换行
+;;----------------------------------------------------------------------------
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+
+;;----------------------------------------------------------------------------
+;; 显示时间
+;;----------------------------------------------------------------------------
+;;启用时间显示设置，在minibuffer上面的那个杠上
+(display-time-mode 1)
+;;时间使用24小时制
+(setq display-time-24hr-format t)
+;;时间显示包括日期和具体时间
+(setq display-time-day-and-date t)
+;;时间栏旁边启用邮件设置
+(setq display-time-use-mail-icon t)
+;;时间的变化频率
+(setq display-time-interval 10)
+;;显示时间的格式
+;;(setq display-time-format nil)
 
 ;;----------------------------------------------------------------------------
 (provide 'init-local)
