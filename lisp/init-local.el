@@ -71,58 +71,6 @@
 (autoload 'thumbs "thumbs" "Preview images in a directory." t)
 
 ;;----------------------------------------------------------------------------
-;; org mode
-;;----------------------------------------------------------------------------
-(setq org-startup-indented t)
-
-(setq org-directory "~/org")
-(setq org-mobile-inbox-for-pull "~/org/flagged.org")
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-(setq org-default-notes-file (concat org-directory "/capture.org"))
-(define-key global-map "\C-ci" 'org-capture)
-
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/inbox.org" "Tasks")
-         "* TODO %?\n %i")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
-         "* %?\nEntered on %U\n %i\n %a")))
-
-; Targets include this file and any file contributing to the agenda - up to 9 levels deep
-(setq org-refile-targets (quote ((nil :maxlevel . 9)
-                                 (org-agenda-files :maxlevel . 9))))
-
-; Use full outline paths for refile targets - we file directly with IDO
-(setq org-refile-use-outline-path t)
-
-; Targets complete directly with IDO
-(setq org-outline-path-complete-in-steps nil)
-
-; Allow refile to create parent tasks with confirmation
-(setq org-refile-allow-creating-parent-nodes (quote confirm))
-
-; Use IDO for both buffer and file completion and ido-everywhere to t
-(setq org-completion-use-ido t)
-(setq ido-everywhere t)
-(setq ido-max-directory-size 100000)
-(ido-mode (quote both))
-; Use the current window when visiting files and buffers with ido
-(setq ido-default-file-method 'selected-window)
-(setq ido-default-buffer-method 'selected-window)
-; Use the current window for indirect buffer display
-(setq org-indirect-buffer-display 'current-window)
-
-;;;; Refile settings
-; Exclude DONE state tasks from refile targets
-(defun bh/verify-refile-target ()
-  "Exclude todo keywords with a done state from refile targets"
-  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
-
-(setq org-refile-target-verify-function 'bh/verify-refile-target)
-
-;;;;agenda
-
-
-;;----------------------------------------------------------------------------
 ;;;;picture
 ;;----------------------------------------------------------------------------
 (setq octopress-image-dir (expand-file-name "~/octopress/source/imgs/"))
@@ -246,24 +194,24 @@ opinion. "
 ;; compatible with emms-playlist mode keybindings
 ;; you can view emms-playlist-mode.el to get details about
 ;; emms-playlist mode keys map
-(global-set-key (kbd "C-c e s") 'emms-stop)
-(global-set-key (kbd "C-c e P") 'emms-pause)
+(global-set-key (kbd "C-c e q") 'emms-stop)
+(global-set-key (kbd "C-c e SPC") 'emms-pause)
 (global-set-key (kbd "C-c e n") 'emms-next)
 (global-set-key (kbd "C-c e p") 'emms-previous)
 (global-set-key (kbd "C-c e f") 'emms-show)
 (global-set-key (kbd "C-c e >") 'emms-seek-forward)
 (global-set-key (kbd "C-c e <") 'emms-seek-backward)
 ;; these keys maps were derivations of above keybindings
-(global-set-key (kbd "C-c e S") 'emms-start)
+(global-set-key (kbd "C-c e s") 'emms-start)
 (global-set-key (kbd "C-c e g") 'emms-playlist-mode-go)
 (global-set-key (kbd "C-c e t") 'emms-play-directory-tree)
 (global-set-key (kbd "C-c e h") 'emms-shuffle)
 (global-set-key (kbd "C-c e e") 'emms-play-file)
+(global-set-key (kbd "C-c e d") 'emms-play-dired)
 (global-set-key (kbd "C-c e l") 'emms-play-playlist)
 (global-set-key (kbd "C-c e r") 'emms-toggle-repeat-track)
-(global-set-key (kbd "C-c e R") 'emms-toggle-repeat-playlist)
+(global-set-key (kbd "C-c e R") 'emms-toggle-random-playlist)
 (global-set-key (kbd "C-c e u") 'emms-score-up-playing)
-(global-set-key (kbd "C-c e d") 'emms-score-down-playing)
 (global-set-key (kbd "C-c e o") 'emms-score-show-playing)
 
 ;;----------------------------------------------------------------------------
@@ -349,11 +297,18 @@ opinion. "
 ;;时间显示包括日期和具体时间
 (setq display-time-day-and-date t)
 ;;时间栏旁边启用邮件设置
-(setq display-time-use-mail-icon t)
+(setq display-time-use-mail-icon nil)
 ;;时间的变化频率
 (setq display-time-interval 10)
 ;;显示时间的格式
 ;;(setq display-time-format nil)
+
+;;----------------------------------------------------------------------------
+;; dictionary
+;;----------------------------------------------------------------------------
+(require 'dictionary)
+;; key binding
+(global-set-key (kbd "C-c d") 'dictionary-search-pointer)
 
 ;;----------------------------------------------------------------------------
 (provide 'init-local)
