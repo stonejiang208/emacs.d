@@ -311,4 +311,15 @@ opinion. "
 (global-set-key (kbd "C-c d") 'dictionary-search-pointer)
 
 ;;----------------------------------------------------------------------------
+;; ÐÔ¸ÐÎ²°Í
+;;----------------------------------------------------------------------------
+(require 'highlight-tail)
+(message "Highlight-tail loaded - now your Emacs will be even more sexy!")
+(setq highlight-tail-colors '(("black" . 0)
+                              ("#bc2525" . 25)
+                              ("black" . 66)))
+(highlight-tail-mode)
+
+
+;;----------------------------------------------------------------------------
 (provide 'init-local)
