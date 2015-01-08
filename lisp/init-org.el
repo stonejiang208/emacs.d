@@ -171,6 +171,7 @@
   (insert (concat "[[" filename "]]"))
   (org-display-inline-images)
   )
+(define-key global-map (kbd "C-c m s") 'my-screenshot)
 
 
 (after-load 'org
