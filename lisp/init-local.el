@@ -73,75 +73,75 @@
 ;;----------------------------------------------------------------------------
 ;;;;picture
 ;;----------------------------------------------------------------------------
-(setq octopress-image-dir (expand-file-name "~/octopress/source/imgs/"))
-(setq octopress-image-url "/imgs/")
+;; (setq octopress-image-dir (expand-file-name "~/octopress/source/imgs/"))
+;; (setq octopress-image-url "/imgs/")
 
-(defun my-screenshot (dir_path)
-  "Take a screenshot and save it to dir_path path.
-Return image filename without path so that you can concat with your
-opinion. "
-  (interactive)
-  (let* ((full-file-name
-          (concat (make-temp-name (concat dir_path (buffer-name) "_" (format-time-string "%Y%m%d_%H%M%S_"))) ".png"))
-         (file-name (my-base-name full-file-name))
-         )
-    (call-process-shell-command "scrot" nil nil nil (concat "-s " "\"" full-file-name "\""))
-    file-name
-    ))
+;; (defun my-screenshot (dir_path)
+;;   "Take a screenshot and save it to dir_path path.
+;; Return image filename without path so that you can concat with your
+;; opinion. "
+;;   (interactive)
+;;   (let* ((full-file-name
+;;           (concat (make-temp-name (concat dir_path (buffer-name) "_" (format-time-string "%Y%m%d_%H%M%S_"))) ".png"))
+;;          (file-name (my-base-name full-file-name))
+;;          )
+;;     (call-process-shell-command "scrot" nil nil nil (concat "-s " "\"" full-file-name "\""))
+;;     file-name
+;;     ))
 
-;; Screenshot
-(defun markdown-screenshot (arg)
-  "Take a screenshot for Octopress"
-  (interactive "P")
-  (let* ((dir_path octopress-image-dir)
-   (url (concat octopress-image-url (my-screenshot dir_path))))
-    (if arg
-  (insert "![](" url ")")
-      (insert "{% img " url " %}"))))
-;;
+;; ;; Screenshot
+;; (defun markdown-screenshot (arg)
+;;   "Take a screenshot for Octopress"
+;;   (interactive "P")
+;;   (let* ((dir_path octopress-image-dir)
+;;    (url (concat octopress-image-url (my-screenshot dir_path))))
+;;     (if arg
+;;   (insert "![](" url ")")
+;;       (insert "{% img " url " %}"))))
+;; ;;
 
-;; base on http://emacswiki.org/emacs/CopyAndPaste
-(defun get-clipboard-contents-as-string ()
-    "Return the value of the clipboard contents as a string."
-    (defun get-clipboard-contents-as-string ()
-    "Return the value of the clipboard contents as a string."
-    (let ((x-select-enable-clipboard t))
-      (or (if (fboundp 'x-cut-buffer-or-selection-value) (x-cut-buffer-or-selection-value))
-          (if (fboundp 'x-last-selected-text-clipboard) x-last-selected-text-clipboard)
-          (if (fboundp 'pbcopy-selection-value) (pbcopy-selection-value))
-          )
-      ))
-)
+;; ;; base on http://emacswiki.org/emacs/CopyAndPaste
+;; (defun get-clipboard-contents-as-string ()
+;;     "Return the value of the clipboard contents as a string."
+;;     (defun get-clipboard-contents-as-string ()
+;;     "Return the value of the clipboard contents as a string."
+;;     (let ((x-select-enable-clipboard t))
+;;       (or (if (fboundp 'x-cut-buffer-or-selection-value) (x-cut-buffer-or-selection-value))
+;;           (if (fboundp 'x-last-selected-text-clipboard) x-last-selected-text-clipboard)
+;;           (if (fboundp 'pbcopy-selection-value) (pbcopy-selection-value))
+;;           )
+;;       ))
+;; )
 
-(defun copy-file-from-clipboard-to-path (dst-dir)
-  "copy file to desired path from clipboard"
-  (interactive)
-  (let* ((full-file-name) (file-name) (ext) (new-file-name))
-    (setq full-file-name (get-clipboard-contents-as-string))
-    (if (eq (search "file://" full-file-name) 0)
-  (progn
-    (setq full-file-name (substring full-file-name 7))
-    (setq file-name (my-base-name full-file-name))
-    (setq ext (concat "." (file-name-extension file-name)))
-    (setq new-file-name
-      (concat (make-temp-name
-           (concat (substring file-name 0
-                      (search "." file-name :from-end t))
-               (format-time-string "_%Y%m%d_%H%M%S_"))) ext))
-    (setq new-full-file-name (concat dst-dir new-file-name))
-    (copy-file full-file-name new-full-file-name)
-    new-file-name
-    )
-      )))
+;; (defun copy-file-from-clipboard-to-path (dst-dir)
+;;   "copy file to desired path from clipboard"
+;;   (interactive)
+;;   (let* ((full-file-name) (file-name) (ext) (new-file-name))
+;;     (setq full-file-name (get-clipboard-contents-as-string))
+;;     (if (eq (search "file://" full-file-name) 0)
+;;   (progn
+;;     (setq full-file-name (substring full-file-name 7))
+;;     (setq file-name (my-base-name full-file-name))
+;;     (setq ext (concat "." (file-name-extension file-name)))
+;;     (setq new-file-name
+;;       (concat (make-temp-name
+;;            (concat (substring file-name 0
+;;                       (search "." file-name :from-end t))
+;;                (format-time-string "_%Y%m%d_%H%M%S_"))) ext))
+;;     (setq new-full-file-name (concat dst-dir new-file-name))
+;;     (copy-file full-file-name new-full-file-name)
+;;     new-file-name
+;;     )
+;;       )))
 
-;; Insert Image From Clip Board
-(defun markdown-insert-image-from-clipboard (arg)
-  "Insert an image from clipboard and copy it to disired path"
-  (interactive "P")
-  (let ((url (concat octopress-image-url (copy-file-from-clipboard-to-path octopress-image-dir))))
-    (if arg
-  (insert "![](" url ")")
-      (insert "{% img " url " %}"))))
+;; ;; Insert Image From Clip Board
+;; (defun markdown-insert-image-from-clipboard (arg)
+;;   "Insert an image from clipboard and copy it to disired path"
+;;   (interactive "P")
+;;   (let ((url (concat octopress-image-url (copy-file-from-clipboard-to-path octopress-image-dir))))
+;;     (if arg
+;;   (insert "![](" url ")")
+;;       (insert "{% img " url " %}"))))
 
 ;;----------------------------------------------------------------------------
 ;; tab to space
