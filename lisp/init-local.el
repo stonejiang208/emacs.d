@@ -316,8 +316,8 @@
 (require 'highlight-tail)
 (message "Highlight-tail loaded - now your Emacs will be even more sexy!")
 (setq highlight-tail-colors '(("black" . 0)
-                              ("#bc2525" . 25)
-                              ("black" . 66)))
+                              ("#bc2525" . 10)
+                              ("black" . 50)))
 (highlight-tail-mode)
 
 
