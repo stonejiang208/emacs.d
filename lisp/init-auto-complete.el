@@ -1,4 +1,5 @@
 (require-package 'auto-complete)
+(require-package 'pos-tip)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq-default ac-expand-on-auto-complete nil)
@@ -62,6 +63,7 @@
 (setq dabbrev-friend-buffer-function 'sanityinc/dabbrev-friend-buffer)
 
 ;; 默认开启ac 使用pos-tip
+
 (ac-config-default)
 (require 'pos-tip)
 
