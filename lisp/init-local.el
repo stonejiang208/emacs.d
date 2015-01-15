@@ -40,7 +40,8 @@
 ;;(setq default-process-coding-system 'euc-cn)
 ;;(setq-default pathname-coding-system 'euc-cn)
 
-(set-default-font "Monaco 10")
+(when *is-a-mac*
+  (set-default-font "Monaco 10"))
 (set-fontset-font "fontset-default" 'unicode"STHeiti 12")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,6 +62,7 @@
 ;;----------------------------------------------------------------------------
 ;; evil
 ;;----------------------------------------------------------------------------
+(require-package 'evil)
 (require 'evil)
 (evil-mode 0)
 
@@ -177,6 +179,7 @@
 ;;----------------------------------------------------------------------------
 ;; emms
 ;;----------------------------------------------------------------------------
+(require-package 'emms)
 (add-to-list 'load-path "~/elisp/emms/")
 (require 'emms-setup)
 (emms-standard)
@@ -270,6 +273,7 @@
 ;;----------------------------------------------------------------------------
 ;; 中文日历
 ;;----------------------------------------------------------------------------
+(require-package 'cal-china-x)
 (require 'cal-china-x)
 (setq mark-holidays-in-calendar t)
 (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
@@ -313,6 +317,7 @@
 ;;----------------------------------------------------------------------------
 ;; 性感尾巴
 ;;----------------------------------------------------------------------------
+(require-package 'highlight-tail)
 (require 'highlight-tail)
 (message "Highlight-tail loaded - now your Emacs will be even more sexy!")
 (setq highlight-tail-colors '(("black" . 0)
