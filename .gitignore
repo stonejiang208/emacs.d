@@ -36,3 +36,5 @@ site-lisp/package/
 .DS_Store
 /jabber-avatar-cache
 /ede-projects.el
+/.cask/
+/.sx/
