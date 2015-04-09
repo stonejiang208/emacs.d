@@ -145,8 +145,15 @@
             (message "init completed in %.2fms"
                      (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
+;;----------------------------------------------------------------------------
+;; sunrise
+;;----------------------------------------------------------------------------
+(require 'sunrise-commander)
+
 
 (provide 'init)
+
+
 
 ;; Local Variables:
 ;; coding: utf-8

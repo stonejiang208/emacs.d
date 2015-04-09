@@ -97,6 +97,82 @@
 ;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
 ;;                 (insert (match-string 0))))))
 
+;;----------------------------------------------------------------------------
+;; org mode
+;;----------------------------------------------------------------------------
+(setq org-startup-indented t)
+
+(setq org-directory "~/org")
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+(setq org-default-notes-file (concat org-directory "/capture.org"))
+(define-key global-map "\C-ci" 'org-capture)
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/inbox.org" "Tasks")
+         "* TODO %?\n %i")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org.gpg")
+         "* %?\nEntered on %U\n %i")
+        ("J" "Journal select date" entry (file+datetree+prompt "~/org/journal.org.gpg")
+         "* %?\nEntered on %U\n %i")
+        ("m" "Morning Journal" entry (file+datetree "~/org/journal.org.gpg")
+         "* %U晨间日记:\n- 工作:%?\n- 金钱:\n- 健康:\n- 人际关系:\n- 兴趣:\n- 开心的事:\n- 不开心的事:\n- 梦境:")))
+
+; Targets include this file and any file contributing to the agenda - up to 9 levels deep
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+
+; Use full outline paths for refile targets - we file directly with IDO
+(setq org-refile-use-outline-path t)
+
+; Targets complete directly with IDO
+(setq org-outline-path-complete-in-steps nil)
+
+; Allow refile to create parent tasks with confirmation
+(setq org-refile-allow-creating-parent-nodes (quote confirm))
+
+; Use IDO for both buffer and file completion and ido-everywhere to t
+(setq org-completion-use-ido t)
+(setq ido-everywhere t)
+(setq ido-max-directory-size 100000)
+(ido-mode (quote both))
+; Use the current window when visiting files and buffers with ido
+(setq ido-default-file-method 'selected-window)
+(setq ido-default-buffer-method 'selected-window)
+; Use the current window for indirect buffer display
+(setq org-indirect-buffer-display 'current-window)
+
+;;;; Refile settings
+; Exclude DONE state tasks from refile targets
+(defun bh/verify-refile-target ()
+  "Exclude todo keywords with a done state from refile targets"
+  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
+
+(setq org-refile-target-verify-function 'bh/verify-refile-target)
+
+;;;; insert timestamp
+(define-key global-map (kbd "C-c t") 'org-time-stamp)
+
+;;;  image for org-mode in osx
+; 1. suspend current emacs window
+; 2. call screencapture to capture the screen and save as a file in $HOME/MEGA/img/
+; 3. put the png file reference in current buffer, like this:  [[/home/path/.emacs.img/1q2w3e.png]]
+(add-hook 'org-mode-hook 'iimage-mode) ; enable iimage-mode for org-mode
+(defun my-screenshot ()
+  "Take a screenshot into a unique-named file in the current buffer file
+  directory and insert a link to this file."
+  (interactive)
+  (setq filename
+    (concat (make-temp-name
+         (concat  (getenv "HOME") "/.emacs.img/" ) ) ".png"))
+  (suspend-frame)
+  (call-process-shell-command "screencapture" nil nil nil nil " -i " (concat
+                                "\"" filename "\"" ))
+  (insert (concat "[[" filename "]]"))
+  (org-display-inline-images)
+  )
+(define-key global-map (kbd "C-c m s") 'my-screenshot)
+
 
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)

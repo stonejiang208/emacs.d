@@ -33,6 +33,9 @@ site-lisp/package/
 /.smex-items
 /image-dired/
 /eshell
+.DS_Store
+/jabber-avatar-cache
+/ede-projects.el
 /.cask/
 /.sx/
 /org-clock-save.el
