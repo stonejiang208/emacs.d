@@ -111,11 +111,11 @@
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/inbox.org" "Tasks")
          "* TODO %?\n %i")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org.gpg")
          "* %?\nEntered on %U\n %i")
-        ("J" "Journal select date" entry (file+datetree+prompt "~/org/journal.org")
+        ("J" "Journal select date" entry (file+datetree+prompt "~/org/journal.org.gpg")
          "* %?\nEntered on %U\n %i")
-        ("m" "Morning Journal" entry (file+datetree "~/org/journal.org")
+        ("m" "Morning Journal" entry (file+datetree "~/org/journal.org.gpg")
          "* %U晨间日记:\n- 工作:%?\n- 金钱:\n- 健康:\n- 人际关系:\n- 兴趣:\n- 开心的事:\n- 不开心的事:\n- 梦境:")))
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
