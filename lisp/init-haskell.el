@@ -71,7 +71,8 @@ been saved."
 
 
 ;; Indentation
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(require-package 'hi2)
+(add-hook 'haskell-mode-hook 'turn-on-hi2)
 
 
 

@@ -28,8 +28,7 @@
             (lambda () (setq show-trailing-whitespace nil))))
 
 (require-package 'flycheck-clojure)
-(after-load 'flycheck
-  (flycheck-clojure-setup))
+(eval-after-load 'flycheck '(flycheck-clojure-setup))
 
 
 (provide 'init-clojure-cider)
