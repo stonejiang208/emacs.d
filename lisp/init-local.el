@@ -334,4 +334,18 @@
 (add-to-list 'auto-mode-alist '("\\.iss$"  . iss-mode))
 
 ;;----------------------------------------------------------------------------
+;; emacs-redmine
+;;----------------------------------------------------------------------------
+(add-to-list 'load-path "~/git/emacs-redmine")
+(require 'redmine)
+
+(defun redmine-kub ()
+  (interactive)
+  (setq redmine-program "~/git/emacs-redmine/redmine.py")
+  (setq redmine-project-name "kub")
+  (setq redmine-url "http://dev.koal.com/")
+  (redmine-show-sprints))
+
+
+;;----------------------------------------------------------------------------
 (provide 'init-local)
