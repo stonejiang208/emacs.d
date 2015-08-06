@@ -107,6 +107,7 @@
 
 (require 'init-custom-function)
 (require 'init-chinese)
+(require 'init-cscope)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
