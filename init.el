@@ -106,6 +106,7 @@
 (require 'init-ledger)
 
 (require 'init-custom-function)
+(require 'init-chinese)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
