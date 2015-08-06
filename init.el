@@ -108,6 +108,7 @@
 (require 'init-custom-function)
 (require 'init-chinese)
 (require 'init-cscope)
+(require 'init-emms)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
