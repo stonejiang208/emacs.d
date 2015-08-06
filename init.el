@@ -109,6 +109,9 @@
 (require 'init-chinese)
 (require 'init-cscope)
 (require 'init-emms)
+(require 'init-w3m)
+(require 'init-clock)
+(require 'init-inno)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
