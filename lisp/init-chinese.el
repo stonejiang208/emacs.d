@@ -25,6 +25,14 @@
 (setq file-name-coding-system 'utf-8)
 (setq-default coding-system-history '("utf-8" "gb2312" "latin-2" "latin-1" "gbk"))
 
+;;----------------------------------------------------------------------------
+;; 中文日历
+;;----------------------------------------------------------------------------
+(require-package 'cal-china-x)
+(require 'cal-china-x)
+(setq mark-holidays-in-calendar t)
+(setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+(setq calendar-holidays cal-china-x-important-holidays)
 
 (provide 'init-chinese)
 ;;; init-chinese.el ends here
