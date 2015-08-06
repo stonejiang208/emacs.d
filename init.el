@@ -104,6 +104,8 @@
 
 (require 'init-dash)
 (require 'init-ledger)
+
+(require 'init-custom-function)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
