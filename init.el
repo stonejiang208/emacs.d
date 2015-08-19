@@ -112,6 +112,7 @@
 (require 'init-w3m)
 (require 'init-clock)
 (require 'init-inno)
+(require 'init-speedbar)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
