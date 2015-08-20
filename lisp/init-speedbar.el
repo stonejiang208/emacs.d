@@ -16,4 +16,7 @@
 ;; 让speedbar使用semantic的分析结果
 (require 'semantic/sb)
 
+;; shortcut
+(define-key global-map "\C-cmt" 'sr-speedbar-toggle)
+
 (provide 'init-speedbar)
