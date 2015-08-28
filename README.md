@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.org/emuio/emacs.d.png?branch=master)](https://travis-ci.org/emuio/emacs.d)
+# emuio's config
+This is my own config which base on Purcell.
+THe origin repo is https://github.com/purcell/emacs.d.git
+
 
 # A reasonable Emacs config
 
