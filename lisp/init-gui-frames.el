@@ -99,15 +99,4 @@
 ;;显示时间的格式
 ;;(setq display-time-format nil)
 
-;;----------------------------------------------------------------------------
-;; 性感尾巴
-;;----------------------------------------------------------------------------
-(require-package 'highlight-tail)
-(require 'highlight-tail)
-(message "Highlight-tail loaded - now your Emacs will be even more sexy!")
-(setq highlight-tail-colors '(("black" . 0)
-                              ("#bc2525" . 10)
-                              ("black" . 50)))
-(highlight-tail-mode)
-
 (provide 'init-gui-frames)
