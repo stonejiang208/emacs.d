@@ -124,6 +124,7 @@
 (require 'init-clock)
 (require 'init-inno)
 (require 'init-speedbar)
+(require 'init-cc-mode)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
