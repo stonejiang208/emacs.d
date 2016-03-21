@@ -377,6 +377,7 @@ typical word processor."
 
 ;;;; insert timestamp
 (define-key global-map (kbd "C-c t") 'org-time-stamp)
+(define-key global-map (kbd "C-c T") 'org-time-stamp-inactive)
 
 ;;;  image for org-mode in osx
 ; 1. suspend current emacs window
@@ -425,5 +426,8 @@ typical word processor."
      (sql . nil)
      (sqlite . t))))
 
+;;; start or stop org-pomodoro
+(after-load 'org
+  (define-key org-mode-map (kbd "C-c C-x t") 'org-pomodoro))
 
 (provide 'init-org)
