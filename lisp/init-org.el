@@ -101,7 +101,7 @@ typical word processor."
 
 (setq org-refile-use-cache nil)
 
-; Targets include this file and any file contributing to the agenda - up to 5 levels deep
+                                        ; Targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets '((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5)))
 
 (after-load 'org-agenda
@@ -424,10 +424,20 @@ typical word processor."
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (sql . nil)
-     (sqlite . t))))
+     (sqlite . t)
+     (plantuml . t))))
 
 ;;; start or stop org-pomodoro
 (after-load 'org
   (define-key org-mode-map (kbd "C-c C-x t") 'org-pomodoro))
+
+;;; plantuml jar path
+(setq org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
+(unless (file-exists-p org-plantuml-jar-path)
+  (let ((jar-name "plantuml.jar")
+        (url "http://nchc.dl.sourceforge.net/project/plantuml/plantuml.jar"))
+    (setq org-plantuml-jar-path (expand-file-name jar-name (file-name-directory user-init-file)))
+    (unless (file-exists-p org-plantuml-jar-path)
+      (url-copy-file url org-plantuml-jar-path))))
 
 (provide 'init-org)
