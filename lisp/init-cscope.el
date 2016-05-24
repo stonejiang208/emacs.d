@@ -10,4 +10,7 @@
 ;; java自动打开cscope-mode
 (add-hook 'java-mode-hook (function cscope-minor-mode))
 
+;; python mode支持
+(add-hook 'python-mode-hook (function cscope-minor-mode))
+
 (provide 'init-cscope)
