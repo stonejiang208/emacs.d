@@ -99,4 +99,7 @@
 ;;显示时间的格式
 ;;(setq display-time-format nil)
 
+(require-package 'disable-mouse)
+
+
 (provide 'init-gui-frames)
