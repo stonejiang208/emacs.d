@@ -392,19 +392,16 @@ typical word processor."
 ; 2. call screencapture to capture the screen and save as a file in $HOME/MEGA/img/
 ; 3. put the png file reference in current buffer, like this:  [[/home/path/.emacs.img/1q2w3e.png]]
 (add-hook 'org-mode-hook 'iimage-mode) ; enable iimage-mode for org-mode
+(setq org-image-actual-width nil)
 (defun my-screenshot ()
   "Take a screenshot into a unique-named file in the current buffer file
   directory and insert a link to this file."
   (interactive)
-  (setq filename
-    (concat (make-temp-name
-         (concat  (getenv "HOME") "/.emacs.img/" ) ) ".png"))
+  (setq filename (concat (make-temp-name (concat  (getenv "HOME") "/.emacs.img/" ) ) ".png"))
   (suspend-frame)
-  (call-process-shell-command "screencapture" nil nil nil nil " -i " (concat
-                                "\"" filename "\"" ))
+  (call-process-shell-command "screencapture" nil nil nil nil " -i " (concat "\"" filename "\"" ))
   (insert (concat "[[" filename "]]"))
-  (org-display-inline-images)
-  )
+  (org-display-inline-images))
 (define-key global-map (kbd "C-c m s") 'my-screenshot)
 
 
