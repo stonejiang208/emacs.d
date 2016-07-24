@@ -8,6 +8,6 @@
 (add-to-list 'package-archives
              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (require-package 'elpy)
-(elpy-enable)
+;; (elpy-enable)
 
 (provide 'init-python-mode)
