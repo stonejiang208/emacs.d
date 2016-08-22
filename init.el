@@ -176,6 +176,8 @@
 ;;----------------------------------------------------------------------------
 (require 'sunrise-commander)
 
+(require 'init-ppt)
+
 
 (provide 'init)
 
