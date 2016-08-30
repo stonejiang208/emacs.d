@@ -1,17 +1,6 @@
 ;;; Character sets
 
-(defcustom sanityinc/force-default-font-for-symbols nil
-  "When non-nil, force Emacs to use your default font for symbols."
-  :type 'boolean)
 
-(defun sanityinc/maybe-use-default-font-for-symbols ()
-  "Force Emacs to render symbols using the default font, if so configured."
-  (when sanityinc/force-default-font-for-symbols
-    (set-fontset-font t 'symbol (face-attribute 'default :family))))
-
-(add-hook 'after-init-hook 'sanityinc/maybe-use-default-font-for-symbols)
-
-
 ;;; Changing font sizes
 
 (require 'cl)
@@ -60,11 +49,6 @@ This is helpful for writeroom-mode, in particular."
 
 (add-hook 'visual-fill-column-mode-hook
           'sanityinc/maybe-adjust-visual-fill-column)
-
-(when (eq 'ns window-system)
-  (set-fontset-font
-   t 'symbol
-   (font-spec :family "Apple Color Emoji") nil 'prepend))
 
 
 (defun sanityinc/maybe-adjust-visual-fill-column ()
