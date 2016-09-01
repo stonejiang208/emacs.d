@@ -442,4 +442,8 @@ typical word processor."
     (unless (file-exists-p org-plantuml-jar-path)
       (url-copy-file url org-plantuml-jar-path))))
 
+;;; org-mobile-sync
+(require 'org-mobile-sync)
+(org-mobile-sync-mode 1)
+
 (provide 'init-org)
