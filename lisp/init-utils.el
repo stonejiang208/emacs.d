@@ -89,6 +89,6 @@
 ;;----------------------------------------------------------------------------
 (require 'dictionary)
 ;; key binding
-(global-set-key (kbd "C-c d") 'dictionary-search-pointer)
+(global-set-key (kbd "C-c m d") 'dictionary-search-pointer)
 
 (provide 'init-utils)
