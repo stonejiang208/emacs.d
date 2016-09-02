@@ -16,7 +16,7 @@
 
 (when *is-a-mac*
   (set-default-font "Monaco 12"))
-(set-fontset-font "fontset-default" 'unicode"STHeiti 14")
+;;(set-fontset-font "fontset-default" 'unicode"STHeiti 14")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; unicad.el 让 Emacs 自动识别文件编码
