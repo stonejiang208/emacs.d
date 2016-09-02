@@ -324,7 +324,11 @@
 (maybe-require-package 'cask-mode)
 
 ;; slime-helper
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el"))
+(if (file-exists-p slime-helper-path)
+    (load slime-helper-path)
+  nil
+  )
 ;; Replace "sbcl" with the path to your implementation
 (setq inferior-lisp-program "sbcl")
 
