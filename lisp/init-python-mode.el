@@ -14,5 +14,8 @@
       (add-hook 'python-mode-hook
                 (lambda () (sanityinc/local-push-company-backend 'company-anaconda))))))
 
+(remove-hook 'anaconda-mode-response-read-fail-hook
+             'anaconda-mode-show-unreadable-response)
+
 
 (provide 'init-python-mode)
