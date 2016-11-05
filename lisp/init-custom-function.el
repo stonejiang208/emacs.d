@@ -18,4 +18,12 @@
 ;;----------------------------------------------------------------------------
 (global-set-key "\260" 'ff-find-other-file)
 
+;;; dos2unix and clean whitespace
+(defun dos2unix ()
+  "Replace DOS eolns CR LF with Unix eolns CR."
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match ""))
+  (whitespace-cleanup))
+
 (provide 'init-custom-function)
