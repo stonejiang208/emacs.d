@@ -399,6 +399,7 @@ typical word processor."
   (setq filename (concat (make-temp-name (concat  (getenv "HOME") "/.emacs.img/" ) ) ".png"))
   (suspend-frame)
   (call-process-shell-command "screencapture" nil nil nil nil " -i " (concat "\"" filename "\"" ))
+  (call-process-shell-command "convert" nil nil nil nil (concat "\"" filename "\" -resize  \"50%\"" ) (concat "\"" filename "\"" ))
   (insert (concat "[[" filename "]]"))
   (org-display-inline-images))
 (define-key global-map (kbd "C-c m s") 'my-screenshot)
