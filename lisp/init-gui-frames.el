@@ -104,7 +104,7 @@
 ;;; nyan cat
 (require-package 'nyan-mode)
 (nyan-mode t)
-(setq nyan-animate-nyancat t)
+(nyan-start-animation)
 (setq nyan-wavy-trail t)
 
 (provide 'init-gui-frames)
