@@ -133,7 +133,8 @@
 (require 'init-inno)
 (require 'init-speedbar)
 (require 'init-cc-mode)
-(require 'init-ggtags)
+(unless (version<= emacs-version "24.1")
+  (require 'init-ggtags))
 (require 'init-yasnippet)
 ;; Extra packages which don't require any configuration
 
