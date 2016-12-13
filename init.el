@@ -136,6 +136,13 @@
 (unless (version<= emacs-version "24.1")
   (require 'init-ggtags))
 (require 'init-yasnippet)
+
+;; use-package which simple configuration
+(use-package youdao-dictionary
+  :config
+  (url-automatic-caching t)
+  :bind ("C-c y" . youdao-dictionary-search-at-point))
+
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
