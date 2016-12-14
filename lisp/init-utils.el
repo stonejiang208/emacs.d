@@ -71,11 +71,5 @@
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
-;;----------------------------------------------------------------------------
-;; dictionary
-;;----------------------------------------------------------------------------
-(require 'dictionary)
-;; key binding
-(global-set-key (kbd "C-c m d") 'dictionary-search-pointer)
 
 (provide 'init-utils)
