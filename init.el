@@ -140,7 +140,7 @@
 ;; use-package which simple configuration
 (use-package youdao-dictionary
   :config
-  (url-automatic-caching t)
+  (setq url-automatic-caching t)
   :bind ("C-c y" . youdao-dictionary-search-at-point))
 
 ;; Extra packages which don't require any configuration
