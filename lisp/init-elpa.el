@@ -97,8 +97,5 @@ locate PACKAGE."
 
 (add-hook 'package-menu-mode-hook 'sanityinc/maybe-widen-package-menu-columns)
 
-;;; use-package
-(require-package 'use-package)
-(setq use-package-always-ensure t)
 
 (provide 'init-elpa)
