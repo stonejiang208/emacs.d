@@ -136,7 +136,8 @@
 (unless (version<= emacs-version "24.1")
   (require 'init-ggtags))
 (require 'init-yasnippet)
-(require 'init-youdao-dictionary)
+(unless (version<= emacs-version "24.1")
+  (require 'init-youdao-dictionary))
 
 
 ;; Extra packages which don't require any configuration
