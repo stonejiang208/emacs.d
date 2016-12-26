@@ -178,11 +178,9 @@
 (require 'init-locales)
 
 ;;----------------------------------------------------------------------------
-;; sunrise
+;; 3rd party code which isn't available in MELPA
 ;;----------------------------------------------------------------------------
 (require 'sunrise-commander)
-
-(require 'init-ppt)
 
 
 (provide 'init)
