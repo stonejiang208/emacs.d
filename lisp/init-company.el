@@ -44,6 +44,10 @@
     (add-hook 'company-completion-finished-hook 'sanityinc/page-break-lines-maybe-reenable)
     (add-hook 'company-completion-cancelled-hook 'sanityinc/page-break-lines-maybe-reenable)))
 
+;;; Possible improvements
+(setq company-tooltip-limit 20) ; bigger popup window
+(setq company-idle-delay .3)    ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)     ; remove annoying blinking
 
 
 (provide 'init-company)

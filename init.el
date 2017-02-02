@@ -138,6 +138,7 @@
 (require 'init-yasnippet)
 (unless (version<= emacs-version "24.1")
   (require 'init-youdao-dictionary))
+(require 'init-go)
 
 
 ;; Extra packages which don't require any configuration
