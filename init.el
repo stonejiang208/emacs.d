@@ -140,7 +140,8 @@
   (require 'init-youdao-dictionary))
 (require 'init-go)
 (require 'init-ppt)
-(require 'init-ycmd)
+(unless (version< emacs-version "24.4")
+  (require 'init-ycmd))
 
 ;; Extra packages which don't require any configuration
 
