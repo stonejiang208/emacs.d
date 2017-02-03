@@ -140,6 +140,7 @@
   (require 'init-youdao-dictionary))
 (require 'init-go)
 (require 'init-ppt)
+(require 'init-ycmd)
 
 ;; Extra packages which don't require any configuration
 
