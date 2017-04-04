@@ -470,4 +470,7 @@ typical word processor."
   (cancel-timer org-mobile-sync-timer))
 (org-mobile-sync-enable)
 
+;;; org-brain
+(require-package 'org-brain)
+
 (provide 'init-org)
