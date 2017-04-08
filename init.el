@@ -151,7 +151,7 @@
 (require-package 'dsvn)
 (when *is-a-mac*
   (require-package 'osx-location))
-(require-package 'regex-tool)
+(maybe-require-package 'regex-tool)
 (require-package 'protobuf-mode)
 
 ;;----------------------------------------------------------------------------
@@ -184,6 +184,10 @@
 ;; 3rd party code which isn't available in MELPA
 ;;----------------------------------------------------------------------------
 (require 'sunrise-commander)
+
+
+(when (maybe-require-package 'uptimes)
+  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 
 (provide 'init)
