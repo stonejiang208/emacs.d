@@ -471,6 +471,6 @@ typical word processor."
 (org-mobile-sync-enable)
 
 ;;; org-brain
-(maybe-require-package 'org-brain)
+;;; (maybe-require-package 'org-brain)
 
 (provide 'init-org)
