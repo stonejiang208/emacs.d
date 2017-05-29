@@ -307,6 +307,37 @@ typical word processor."
 (setq org-archive-mark-done nil)
 (setq org-archive-location "%s_archive::* Archive")
 
+;; agenda setup
+(setq org-agenda-files
+      ;; add notes.org?
+      (cond
+       ((eq system-type 'windows-nt)
+        (list
+         "d:/jiangtao/org/inbox.org"
+         "d:/jiangtao/org/tasks.org"
+         "d:/jiangtao/org/review.org"
+         "d:/jiangtao/org/gtd.org"
+         "d:/jiangtao/org/someday.org"
+         "d:/jiangtao/org/notes.org"
+         "d:/jiangtao/org/projects.org"))
+       ((eq system-type 'darwin)
+        (list
+         "~/org/inbox.org"
+         "~/org/tasks.org"
+         "~/org/gtd.org"
+         "~/org/review.org"
+         "~/org/notes.org"
+         "~/org/someday.org"
+         "~/org/projects.org"))
+       ((eq system-type 'gnu/linux)
+        (list
+         "~/org/inbox.org"
+         "~/org/tasks.org"
+         "~/org/gtd.org"
+         "~/org/notes.org"
+         "~/org/review.org"
+         "~/org/someday.org"
+         "~/org/projects.org"))))
 
 
 

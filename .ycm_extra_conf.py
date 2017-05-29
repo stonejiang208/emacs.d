@@ -48,6 +48,8 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+  '-isystem',
+  '/Users/jiangtao/workspace/pub/DRE/x.4.3/ACE_wrappers'
 ]
 
 
