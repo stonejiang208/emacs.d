@@ -3,9 +3,8 @@
 (add-hook 'c++-mode-hook 'ycmd-mode)
 
 ;;;; need change to your own path
-(set-variable 'ycmd-server-command '("python" "/Users/emuio/git/ycmd/ycmd/"))
-(set-variable 'ycmd-global-config "/Users/emuio/git/ycmd/examples/.ycm_extra_conf.py")
-
+(set-variable 'ycmd-server-command '("python" "/Users/jiangtao/live-src/ycmd/ycmd"))
+(set-variable 'ycmd-global-config "/Users/jiangtao/.emacs.d/.ycm_extra_conf.py")
 ;;;; Completion framework
 (require-package 'company-ycmd)
 (require 'company-ycmd)
