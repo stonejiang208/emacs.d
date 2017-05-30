@@ -4,6 +4,12 @@
 ;;; Code:
 (setq c-default-style "ellemtel")
 (require 'mpc-mode)
+(defun generate-gnu-makefle ()
+  (interactive)
+  (message "call mwc.pl -type gnuace ...")
+  )
+(add-hook 'c++-mode-hook (lambda ()
+                           (local-set-key "\C-cg" 'generate-gnu-makefle)))
 (require 'template)
 (require 'time-stamp)
 (setq time-stamp-active t)
